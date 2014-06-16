@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta name="viewport" content="width=320; user-scalable=no" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Auth Demo</title>
+    <script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="phonegap.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script
+	src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+
+</head>
+
+<script type="text/javascript">
+
+function submit {
+	var markers = { "markers": [
+	                            { "position": "128.3657142857143", "markerPosition": "7" },
+	                            { "position": "235.1944023323615", "markerPosition": "19" },
+	                            { "position": "42.5978231292517", "markerPosition": "-3" }
+	                          ]};
+	
+	$.ajax({       
+ 		   type : "POST",   
+ 		   url : "http://localhost:9000",
+ 		   contentType: 'application/json',
+ 		   data : JSON.stringify(markers),
+ 		   dataType:"json",
+ 		   success : function(data) {       
+ 		   
+ 		          },
+ 		   error : function(xhr, type) { 
+ 				alert("aaaa");
+ 		   }  
+ 		  }); 
+	}
+
+</script>
+<body onload="init()">
+    
+<div id="loginPage" data-role="page" data-theme="a">
+
+    <div data-role="header">
+        <h1>Welcome to Euphoria</h1>
+    </div>
+
+    <div data-role="content">    
+
+        <form id="loginForm">
+        <div data-role="fieldcontain" class="ui-hide-label">
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" value="" placeholder="Username" />
+        </div>
+
+        <div data-role="fieldcontain" class="ui-hide-label">
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" value="" placeholder="Password" />
+        </div>
+		<div class="ui-block-b">
+        	<input type="submit" value="Login" id="submitButton" onclick="submit();">
+        </div>
+        </form>
+        
+    </div>
+
+</div>
+
+</body>
+</html>
